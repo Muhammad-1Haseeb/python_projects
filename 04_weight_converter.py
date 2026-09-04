@@ -12,4 +12,4 @@ elif unit.upper() == "P":
 else:
     print(f"{unit} is not a valid unit. Please try again.")
 
-print(f"Weight: {weight} {unit}")
+print(f"Weight: {round(weight, 1)} {unit}")
