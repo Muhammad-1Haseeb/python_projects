@@ -1,5 +1,5 @@
 import random
-from wordslist import words
+from wordslist import words_data  # Imported new words_data list
 
 
 # Dictionary of key: ASCII art stages
@@ -34,7 +34,7 @@ def display_man(wrong_guesses):
     print("***************")
 
 def display_hint(hint):
-    print(" ".join(hint))
+    print("Word: " + " ".join(hint))
 
 def display_answer(answer):
     print("Answer: " + " ".join(answer))
@@ -59,14 +59,19 @@ def get_valid_guess(guessed_letters):
         return guess
 
 def play_game():
-    answer = random.choice(words)
+    # Random selection from dictionary structure
+    selected_data = random.choice(words_data)
+    answer = selected_data["word"]
+    category_hint = selected_data["category_hint"]
+    
     hint = ["_"] * len(answer)
     wrong_guesses = 0
     guessed_letters = set()
     max_wrong = len(hangman_art) - 1
     
     print(f"\n🎮 New Game! The word has {len(answer)} letters.")
-    print(f"💡 You can guess up to {max_wrong} wrong times.")
+    print(f"💡 HINT: {category_hint}") # Displaying the descriptive hint
+    print(f"⚠️ You can guess up to {max_wrong} wrong times.")
 
     while True:
         display_man(wrong_guesses)
